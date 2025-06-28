@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSteps - Login & Register</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fecostepsc3183back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background min-h-screen font-source-sans">
+    <!-- Header -->
+    <header class="bg-surface shadow-soft border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary mr-3" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l3 3 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-xl font-inter font-bold text-primary">EcoSteps</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="garden_owner_dashboard.html" class="text-text-secondary hover:text-primary transition-smooth">Dashboard</a>
+                    <a href="ngo_carbon_credits_marketplace.html" class="text-text-secondary hover:text-primary transition-smooth">Marketplace</a>
+                    <a href="user_profile_account_settings.html" class="text-text-secondary hover:text-primary transition-smooth">Profile</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Hero Section (Desktop) -->
+            <div class="hidden lg:block">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lush green forest representing carbon credits" class="w-full h-96 object-cover rounded-2xl shadow-organic" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h2 class="text-2xl font-inter font-bold mb-2">Turn Your Garden Into Carbon Credits</h2>
+                        <p class="text-lg opacity-90">Join thousands of garden owners monetizing their environmental impact</p>
+                    </div>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="mt-8 grid grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary">10K+</div>
+                        <div class="text-sm text-text-secondary">Active Users</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary">50K+</div>
+                        <div class="text-sm text-text-secondary">Credits Traded</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary">200+</div>
+                        <div class="text-sm text-text-secondary">NGO Partners</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Authentication Form -->
+            <div class="w-full max-w-md mx-auto lg:mx-0">
+                <div class="bg-surface rounded-2xl shadow-organic-hover p-8 border border-gray-100">
+                    <!-- Tab Navigation -->
+                    <div class="flex mb-8 bg-gray-50 rounded-lg p-1" id="authTabs">
+                        <button class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-smooth tab-button active" data-tab="login">
+                            Login
+                        </button>
+                        <button class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-smooth tab-button" data-tab="register">
+                            Register
+                        </button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <div id="loginForm" class="tab-content">
+                        <div class="text-center mb-6">
+                            <h1 class="text-2xl font-inter font-bold text-text-primary mb-2">Welcome Back</h1>
+                            <p class="text-text-secondary">Sign in to your EcoSteps account</p>
+                        </div>
+
+                        <form class="space-y-6" id="loginFormElement">
+                            <div>
+                                <label for="loginEmail" class="block text-sm font-medium text-text-primary mb-2">Email Address</label>
+                                <input type="email" id="loginEmail" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="Enter your email" />
+                            </div>
+
+                            <div>
+                                <label for="loginPassword" class="block text-sm font-medium text-text-primary mb-2">Password</label>
+                                <div class="relative">
+                                    <input type="password" id="loginPassword" name="password" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth pr-12" placeholder="Enter your password" />
+                                    <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text-primary" onclick="togglePassword('loginPassword')">
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
+                                    <span class="ml-2 text-sm text-text-secondary">Remember me</span>
+                                </label>
+                                <a href="#" class="text-sm text-primary hover:text-primary-600 transition-smooth" id="forgotPasswordLink">Forgot password?</a>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-smooth" id="loginSubmitBtn">
+                                Sign In
+                            </button>
+                        </form>
+
+                        <!-- Social Login -->
+                        <div class="mt-6">
+                            <div class="relative">
+                                <div class="absolute inset-0 flex items-center">
+                                    <div class="w-full border-t border-gray-200"></div>
+                                </div>
+                                <div class="relative flex justify-center text-sm">
+                                    <span class="px-2 bg-surface text-text-secondary">Or continue with</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 grid grid-cols-2 gap-3">
+                                <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-200 rounded-lg shadow-sm bg-surface text-sm font-medium text-text-secondary hover:bg-gray-50 transition-smooth" id="googleSignIn">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24">
+                                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                    </svg>
+                                    <span class="ml-2">Google</span>
+                                </button>
+
+                                <button class="w-full inline-flex justify-center py-2 px-4 border border-gray-200 rounded-lg shadow-sm bg-surface text-sm font-medium text-text-secondary hover:bg-gray-50 transition-smooth" id="facebookSignIn">
+                                    <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    <span class="ml-2">Facebook</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="registerForm" class="tab-content hidden">
+                        <div class="text-center mb-6">
+                            <h1 class="text-2xl font-inter font-bold text-text-primary mb-2">Create Account</h1>
+                            <p class="text-text-secondary">Join the carbon credit marketplace</p>
+                        </div>
+
+                        <form class="space-y-6" id="registerFormElement">
+                            <!-- Role Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-3">Account Type</label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <label class="relative">
+                                        <input type="radio" name="role" value="garden_owner" class="sr-only" checked />
+                                        <div class="role-card border-2 border-primary bg-primary/5 rounded-lg p-4 cursor-pointer transition-smooth">
+                                            <div class="text-center">
+                                                <svg class="h-8 w-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                                                </svg>
+                                                <div class="text-sm font-medium text-primary">Garden Owner</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="relative">
+                                        <input type="radio" name="role" value="ngo" class="sr-only" />
+                                        <div class="role-card border-2 border-gray-200 bg-gray-50 rounded-lg p-4 cursor-pointer transition-smooth">
+                                            <div class="text-center">
+                                                <svg class="h-8 w-8 text-text-secondary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                                </svg>
+                                                <div class="text-sm font-medium text-text-secondary">NGO</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Basic Information -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-text-primary mb-2">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="John" />
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-text-primary mb-2">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="Doe" />
+                                </div>
+                            </div>
+
+                            <!-- Organization Name (NGO only) -->
+                            <div id="organizationField" class="hidden">
+                                <label for="organizationName" class="block text-sm font-medium text-text-primary mb-2">Organization Name</label>
+                                <input type="text" id="organizationName" name="organizationName" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="Green Earth Foundation" />
+                            </div>
+
+                            <div>
+                                <label for="registerEmail" class="block text-sm font-medium text-text-primary mb-2">Email Address</label>
+                                <input type="email" id="registerEmail" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="john@example.com" />
+                            </div>
+
+                            <div>
+                                <label for="registerPassword" class="block text-sm font-medium text-text-primary mb-2">Password</label>
+                                <div class="relative">
+                                    <input type="password" id="registerPassword" name="password" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth pr-12" placeholder="Create a strong password" />
+                                    <button type="button" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text-primary" onclick="togglePassword('registerPassword')">
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <!-- Password Strength Indicator -->
+                                <div class="mt-2">
+                                    <div class="flex space-x-1">
+                                        <div class="h-1 w-full bg-gray-200 rounded-full">
+                                            <div id="passwordStrength" class="h-1 bg-error rounded-full transition-smooth" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    <p id="passwordStrengthText" class="text-xs text-text-secondary mt-1">Password strength: Weak</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth" placeholder="Confirm your password" />
+                            </div>
+
+                            <!-- Document Upload (NGO only) -->
+                            <div id="documentUpload" class="hidden">
+                                <label for="verificationDoc" class="block text-sm font-medium text-text-primary mb-2">Verification Document</label>
+                                <div class="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center hover:border-primary transition-smooth">
+                                    <svg class="h-8 w-8 text-text-secondary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                    </svg>
+                                    <p class="text-sm text-text-secondary mb-2">Upload organization certificate or registration document</p>
+                                    <input type="file" id="verificationDoc" name="verificationDoc" accept=".pdf,.jpg,.jpeg,.png" class="hidden" />
+                                    <button type="button" onclick="document.getElementById('verificationDoc').click()" class="text-primary hover:text-primary-600 text-sm font-medium">Choose File</button>
+                                </div>
+                            </div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="terms" name="terms" required class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded mt-1" />
+                                <label for="terms" class="ml-2 text-sm text-text-secondary">
+                                    I agree to the <a href="#" class="text-primary hover:text-primary-600">Terms of Service</a> and <a href="#" class="text-primary hover:text-primary-600">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 focus:ring-2 focus:ring-primary/20 transition-smooth" id="registerSubmitBtn">
+                                Create Account
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Security Badges -->
+                    <div class="mt-8 pt-6 border-t border-gray-100">
+                        <div class="flex items-center justify-center space-x-6 text-xs text-text-secondary">
+                            <div class="flex items-center">
+                                <svg class="h-4 w-4 text-success mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                </svg>
+                                SSL Secured
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-4 w-4 text-success mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Privacy Protected
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-4 w-4 text-success mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Verified Platform
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-sm text-text-secondary">
+                <p>&copy; 2025 EcoSteps Carbon Platform. All Rights Reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-primary transition-smooth">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Terms of Service</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { AuthService, AuthState } from '../js/services/auth.js';
+        import { Helpers } from '../js/utils/helpers.js';
+
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-primary', 'text-white');
+                        btn.classList.add('text-text-secondary');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    this.classList.remove('text-text-secondary');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show target tab content
+                    document.getElementById(targetTab + 'Form').classList.remove('hidden');
+                });
+            });
+
+            // Initialize first tab as active
+            document.querySelector('.tab-button[data-tab="login"]').classList.add('bg-primary', 'text-white');
+            document.querySelector('.tab-button[data-tab="login"]').classList.remove('text-text-secondary');
+
+            // Role selection functionality
+            const roleInputs = document.querySelectorAll('input[name="role"]');
+            const organizationField = document.getElementById('organizationField');
+            const documentUpload = document.getElementById('documentUpload');
+
+            roleInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const roleCards = document.querySelectorAll('.role-card');
+                    roleCards.forEach(card => {
+                        card.classList.remove('border-primary', 'bg-primary/5');
+                        card.classList.add('border-gray-200', 'bg-gray-50');
+                        card.querySelector('svg').classList.remove('text-primary');
+                        card.querySelector('svg').classList.add('text-text-secondary');
+                        card.querySelector('.text-sm').classList.remove('text-primary');
+                        card.querySelector('.text-sm').classList.add('text-text-secondary');
+                    });
+
+                    const selectedCard = this.parentElement.querySelector('.role-card');
+                    selectedCard.classList.add('border-primary', 'bg-primary/5');
+                    selectedCard.classList.remove('border-gray-200', 'bg-gray-50');
+                    selectedCard.querySelector('svg').classList.add('text-primary');
+                    selectedCard.querySelector('svg').classList.remove('text-text-secondary');
+                    selectedCard.querySelector('.text-sm').classList.add('text-primary');
+                    selectedCard.querySelector('.text-sm').classList.remove('text-text-secondary');
+
+                    // Show/hide NGO specific fields
+                    if (this.value === 'ngo') {
+                        organizationField.classList.remove('hidden');
+                        documentUpload.classList.remove('hidden');
+                        document.getElementById('organizationName').required = true;
+                    } else {
+                        organizationField.classList.add('hidden');
+                        documentUpload.classList.add('hidden');
+                        document.getElementById('organizationName').required = false;
+                    }
+                });
+            });
+
+            // Password strength indicator
+            const passwordInput = document.getElementById('registerPassword');
+            const strengthBar = document.getElementById('passwordStrength');
+            const strengthText = document.getElementById('passwordStrengthText');
+
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const validation = Helpers.validatePassword(password);
+
+                const strengthColors = {
+                    0: 'bg-error',
+                    1: 'bg-error',
+                    2: 'bg-warning',
+                    3: 'bg-warning',
+                    4: 'bg-success',
+                    5: 'bg-success'
+                };
+
+                const strengthPercentages = {
+                    0: 0,
+                    1: 20,
+                    2: 40,
+                    3: 60,
+                    4: 80,
+                    5: 100
+                };
+
+                strengthBar.style.width = strengthPercentages[validation.score] + '%';
+                strengthBar.className = `h-1 rounded-full transition-smooth ${strengthColors[validation.score]}`;
+                strengthText.textContent = `Password strength: ${validation.strength}`;
+            });
+
+            // Login form submission
+            document.getElementById('loginFormElement').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('loginSubmitBtn');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Signing In...';
+                submitBtn.disabled = true;
+
+                try {
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+
+                    const { data, error } = await AuthService.signIn(email, password);
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    if (data.user) {
+                        // Get user profile to determine role
+                        const { user } = await AuthService.getCurrentUser();
+                        
+                        Helpers.showToast('Success', 'Welcome back!', 'success');
+                        
+                        // Redirect based on role
+                        if (user.role === 'ngo') {
+                            window.location.href = 'ngo_dashboard_impact_tracking.html';
+                        } else {
+                            window.location.href = 'garden_owner_dashboard.html';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    const errorInfo = Helpers.handleApiError(error);
+                    Helpers.showToast(errorInfo.title, errorInfo.message, 'error');
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Register form submission
+            document.getElementById('registerFormElement').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('registerSubmitBtn');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Creating Account...';
+                submitBtn.disabled = true;
+
+                try {
+                    const formData = new FormData(this);
+                    const password = formData.get('password');
+                    const confirmPassword = formData.get('confirmPassword');
+
+                    // Validate passwords match
+                    if (password !== confirmPassword) {
+                        throw new Error('Passwords do not match');
+                    }
+
+                    // Validate password strength
+                    const passwordValidation = Helpers.validatePassword(password);
+                    if (!passwordValidation.isValid) {
+                        throw new Error('Password is too weak. Please use a stronger password.');
+                    }
+
+                    const userData = {
+                        fullName: `${formData.get('firstName')} ${formData.get('lastName')}`,
+                        role: formData.get('role'),
+                        organizationName: formData.get('organizationName')
+                    };
+
+                    const { data, error } = await AuthService.signUp(
+                        formData.get('email'),
+                        password,
+                        userData
+                    );
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    Helpers.showToast(
+                        'Account Created!', 
+                        'Please check your email for verification link.', 
+                        'success'
+                    );
+                    
+                    // Switch to login tab
+                    document.querySelector('.tab-button[data-tab="login"]').click();
+                    
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    const errorInfo = Helpers.handleApiError(error);
+                    Helpers.showToast(errorInfo.title, errorInfo.message, 'error');
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Social login handlers
+            document.getElementById('googleSignIn').addEventListener('click', async function() {
+                try {
+                    const { error } = await AuthService.signInWithProvider('google');
+                    if (error) throw error;
+                } catch (error) {
+                    const errorInfo = Helpers.handleApiError(error);
+                    Helpers.showToast(errorInfo.title, errorInfo.message, 'error');
+                }
+            });
+
+            document.getElementById('facebookSignIn').addEventListener('click', async function() {
+                try {
+                    const { error } = await AuthService.signInWithProvider('facebook');
+                    if (error) throw error;
+                } catch (error) {
+                    const errorInfo = Helpers.handleApiError(error);
+                    Helpers.showToast(errorInfo.title, errorInfo.message, 'error');
+                }
+            });
+
+            // Forgot password handler
+            document.getElementById('forgotPasswordLink').addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                if (!email) {
+                    Helpers.showToast('Error', 'Please enter your email address first.', 'error');
+                    return;
+                }
+
+                try {
+                    const { error } = await AuthService.resetPassword(email);
+                    if (error) throw error;
+                    
+                    Helpers.showToast(
+                        'Reset Link Sent', 
+                        'Check your email for password reset instructions.', 
+                        'success'
+                    );
+                } catch (error) {
+                    const errorInfo = Helpers.handleApiError(error);
+                    Helpers.showToast(errorInfo.title, errorInfo.message, 'error');
+                }
+            });
+
+            // Check if user is already logged in
+            AuthState.subscribe((user, event) => {
+                if (user && event === 'initial') {
+                    // Redirect logged-in users
+                    if (user.role === 'ngo') {
+                        window.location.href = 'ngo_dashboard_impact_tracking.html';
+                    } else {
+                        window.location.href = 'garden_owner_dashboard.html';
+                    }
+                }
+            });
+        });
+
+        // Password visibility toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+        }
+
+        // Make togglePassword global
+        window.togglePassword = togglePassword;
+    </script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Dashboard - Impact Tracking | EcoSteps</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fecostepsc3183back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background min-h-screen font-source-sans">
+    <!-- Header -->
+    <header class="bg-surface shadow-soft border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary mr-3" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l3 3 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-xl font-inter font-bold text-primary">EcoSteps</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="ngo_dashboard_impact_tracking.html" class="text-primary font-medium border-b-2 border-primary pb-1">Dashboard</a>
+                    <a href="ngo_carbon_credits_marketplace.html" class="text-text-secondary hover:text-primary transition-smooth">Marketplace</a>
+                    <a href="user_profile_account_settings.html" class="text-text-secondary hover:text-primary transition-smooth">Profile</a>
+                </nav>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <div class="relative">
+                        <button class="p-2 text-text-secondary hover:text-primary transition-smooth relative">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM10.07 2.82l3.93 3.93-3.93 3.93M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 h-4 w-4 bg-error text-white text-xs rounded-full flex items-center justify-center">3</span>
+                        </button>
+                    </div>
+                    
+                    <!-- User Avatar -->
+                    <div class="flex items-center space-x-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="NGO Representative" class="h-8 w-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        <span class="text-sm font-medium text-text-primary hidden sm:block">Green Earth Foundation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Breadcrumb -->
+            <nav class="flex mb-8" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-sm">
+                    <li>
+                        <a href="ngo_dashboard_impact_tracking.html" class="text-text-secondary hover:text-primary transition-smooth">Dashboard</a>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="h-4 w-4 text-text-secondary mx-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-primary font-medium">Impact Overview</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-inter font-bold text-text-primary mb-2">Impact Dashboard</h1>
+                    <p class="text-text-secondary">Track your carbon offset portfolio and environmental impact</p>
+                </div>
+                <div class="mt-4 lg:mt-0 flex flex-col sm:flex-row gap-3">
+                    <button class="bg-surface border border-gray-200 text-text-primary px-4 py-2 rounded-lg hover:bg-gray-50 transition-smooth flex items-center">
+                        <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Export Report
+                    </button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-smooth flex items-center">
+                        <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        Browse Marketplace
+                    </button>
+                </div>
+            </div>
+
+            <!-- Impact Metrics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total CO2 Offset -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-success-50 rounded-lg">
+                            <svg class="h-6 w-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-success bg-success-50 px-2 py-1 rounded-full">+12.5%</span>
+                    </div>
+                    <h3 class="text-2xl font-inter font-bold text-text-primary mb-1">2,847 tons</h3>
+                    <p class="text-text-secondary text-sm">Total CO2 Offset</p>
+                </div>
+
+                <!-- Active Credits -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-primary-50 rounded-lg">
+                            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-warning bg-warning-50 px-2 py-1 rounded-full">+8.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-inter font-bold text-text-primary mb-1">1,234</h3>
+                    <p class="text-text-secondary text-sm">Active Credits</p>
+                </div>
+
+                <!-- Monthly Spending -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-accent-50 rounded-lg">
+                            <svg class="h-6 w-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-error bg-error-50 px-2 py-1 rounded-full">-3.1%</span>
+                    </div>
+                    <h3 class="text-2xl font-inter font-bold text-text-primary mb-1">$18,450</h3>
+                    <p class="text-text-secondary text-sm">Monthly Spending</p>
+                </div>
+
+                <!-- Portfolio Diversity -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-secondary-50 rounded-lg">
+                            <svg class="h-6 w-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-success bg-success-50 px-2 py-1 rounded-full">+5.7%</span>
+                    </div>
+                    <h3 class="text-2xl font-inter font-bold text-text-primary mb-1">89 gardens</h3>
+                    <p class="text-text-secondary text-sm">Portfolio Diversity</p>
+                </div>
+            </div>
+
+            <!-- Charts and Analytics Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Offset Trends Chart -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-inter font-bold text-text-primary">Offset Trends</h3>
+                        <div class="flex space-x-2">
+                            <button class="text-xs px-3 py-1 bg-primary text-white rounded-full">12M</button>
+                            <button class="text-xs px-3 py-1 text-text-secondary hover:bg-gray-100 rounded-full transition-smooth">6M</button>
+                            <button class="text-xs px-3 py-1 text-text-secondary hover:bg-gray-100 rounded-full transition-smooth">3M</button>
+                        </div>
+                    </div>
+                    <div class="h-64 flex items-end justify-between space-x-2">
+                        <!-- Mock Chart Bars -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-200 rounded-t" style="height: 120px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">Jan</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-300 rounded-t" style="height: 140px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">Feb</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-400 rounded-t" style="height: 180px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">Mar</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-500 rounded-t" style="height: 200px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">Apr</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-400 rounded-t" style="height: 160px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">May</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 bg-primary-600 rounded-t" style="height: 220px;"></div>
+                            <span class="text-xs text-text-secondary mt-2">Jun</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Geographic Distribution -->
+                <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                    <h3 class="text-lg font-inter font-bold text-text-primary mb-6">Geographic Distribution</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                <span class="text-sm text-text-primary">California</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-text-primary mr-2">34%</span>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full">
+                                    <div class="w-3/4 h-2 bg-primary rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-success rounded-full mr-3"></div>
+                                <span class="text-sm text-text-primary">Oregon</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-text-primary mr-2">28%</span>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full">
+                                    <div class="w-2/3 h-2 bg-success rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-accent rounded-full mr-3"></div>
+                                <span class="text-sm text-text-primary">Washington</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-text-primary mr-2">22%</span>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full">
+                                    <div class="w-1/2 h-2 bg-accent rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-warning rounded-full mr-3"></div>
+                                <span class="text-sm text-text-primary">Colorado</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-text-primary mr-2">16%</span>
+                                <div class="w-20 h-2 bg-gray-200 rounded-full">
+                                    <div class="w-1/3 h-2 bg-warning rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions and Quick Actions -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <!-- Recent Transactions -->
+                <div class="lg:col-span-2 bg-surface rounded-2xl shadow-organic border border-gray-100">
+                    <div class="p-6 border-b border-gray-100">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-inter font-bold text-text-primary">Recent Transactions</h3>
+                            <a href="ngo_carbon_credits_marketplace.html" class="text-primary hover:text-primary-600 text-sm font-medium transition-smooth">View All</a>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Garden Owner</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Credits</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Cost</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-surface divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50 transition-smooth">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">Dec 15, 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah Johnson" class="h-8 w-8 rounded-full object-cover mr-3" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                            <span class="text-sm font-medium text-text-primary">Sarah Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">25 tons</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">$1,250</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-medium bg-success-100 text-success-700 rounded-full">Verified</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-smooth">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">Dec 14, 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg" alt="Michael Chen" class="h-8 w-8 rounded-full object-cover mr-3" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                            <span class="text-sm font-medium text-text-primary">Michael Chen</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">18 tons</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">$900</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-medium bg-warning-100 text-warning-700 rounded-full">Pending</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-smooth">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">Dec 13, 2024</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma Rodriguez" class="h-8 w-8 rounded-full object-cover mr-3" loading="lazy" onerror="this.src='https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                            <span class="text-sm font-medium text-text-primary">Emma Rodriguez</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">32 tons</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-primary">$1,600</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 text-xs font-medium bg-success-100 text-success-700 rounded-full">Verified</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="space-y-6">
+                    <!-- Wallet Section -->
+                    <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                        <h3 class="text-lg font-inter font-bold text-text-primary mb-4">Credit Inventory</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Available Credits</span>
+                                <span class="text-sm font-medium text-text-primary">1,234 tons</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Pending Purchases</span>
+                                <span class="text-sm font-medium text-text-primary">18 tons</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Monthly Budget</span>
+                                <span class="text-sm font-medium text-text-primary">$25,000</span>
+                            </div>
+                            <div class="pt-2 border-t border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-medium text-text-primary">Remaining Budget</span>
+                                    <span class="text-sm font-bold text-success">$6,550</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                        <h3 class="text-lg font-inter font-bold text-text-primary mb-4">Quick Actions</h3>
+                        <div class="space-y-3">
+                            <a href="ngo_carbon_credits_marketplace.html" class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-smooth flex items-center justify-center">
+                                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                </svg>
+                                Browse Marketplace
+                            </a>
+                            <button class="w-full bg-surface border border-gray-200 text-text-primary py-3 px-4 rounded-lg hover:bg-gray-50 transition-smooth flex items-center justify-center">
+                                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                                Generate Reports
+                            </button>
+                            <button class="w-full bg-surface border border-gray-200 text-text-primary py-3 px-4 rounded-lg hover:bg-gray-50 transition-smooth flex items-center justify-center">
+                                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                Manage Subscriptions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Notifications -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100 mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-inter font-bold text-text-primary">Real-time Notifications</h3>
+                    <button class="text-text-secondary hover:text-primary transition-smooth">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3 p-3 bg-success-50 rounded-lg border border-success-200">
+                        <div class="p-1 bg-success rounded-full">
+                            <svg class="h-3 w-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-success-800">New verified credits available from Sarah Johnson's organic garden (25 tons CO2)</p>
+                            <p class="text-xs text-success-600 mt-1">2 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3 p-3 bg-primary-50 rounded-lg border border-primary-200">
+                        <div class="p-1 bg-primary rounded-full">
+                            <svg class="h-3 w-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2L3 7v11a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V7l-7-5z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-primary-800">Monthly impact report is ready for download</p>
+                            <p class="text-xs text-primary-600 mt-1">15 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3 p-3 bg-warning-50 rounded-lg border border-warning-200">
+                        <div class="p-1 bg-warning rounded-full">
+                            <svg class="h-3 w-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-warning-800">Budget alert: 74% of monthly budget used</p>
+                            <p class="text-xs text-warning-600 mt-1">1 hour ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Filtering -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-inter font-bold text-text-primary">Portfolio Analysis</h3>
+                    <button class="text-primary hover:text-primary-600 text-sm font-medium transition-smooth flex items-center">
+                        <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"/>
+                        </svg>
+                        Advanced Filters
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Time Period</label>
+                        <select class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth">
+                            <option>Last 12 months</option>
+                            <option>Last 6 months</option>
+                            <option>Last 3 months</option>
+                            <option>Custom range</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Location</label>
+                        <select class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth">
+                            <option>All locations</option>
+                            <option>California</option>
+                            <option>Oregon</option>
+                            <option>Washington</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Garden Type</label>
+                        <select class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth">
+                            <option>All types</option>
+                            <option>Organic</option>
+                            <option>Permaculture</option>
+                            <option>Urban</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Credit Size</label>
+                        <select class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth">
+                            <option>All sizes</option>
+                            <option>1-10 tons</option>
+                            <option>11-25 tons</option>
+                            <option>25+ tons</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button class="px-4 py-2 text-text-secondary border border-gray-200 rounded-lg hover:bg-gray-50 transition-smooth">Reset</button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-smooth">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-100 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-sm text-text-secondary">
+                <p>&copy; 2025 EcoSteps Carbon Platform. All Rights Reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-primary transition-smooth">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Terms of Service</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mock data for dynamic updates
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate real-time updates
+            setInterval(function() {
+                // Update notification badges
+                const notificationBadge = document.querySelector('.absolute.-top-1.-right-1');
+                if (notificationBadge) {
+                    const currentCount = parseInt(notificationBadge.textContent);
+                    if (Math.random() > 0.8) { // 20% chance to add notification
+                        notificationBadge.textContent = currentCount + 1;
+                    }
+                }
+            }, 30000); // Check every 30 seconds
+
+            // Chart interaction simulation
+            const chartBars = document.querySelectorAll('[style*="height"]');
+            chartBars.forEach(bar => {
+                bar.addEventListener('click', function() {
+                    // Simulate drill-down functionality
+                    console.log('Chart drill-down clicked');
+                    // In a real app, this would show detailed data
+                });
+            });
+
+            // Filter functionality
+            const filterSelects = document.querySelectorAll('select');
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function() {
+                    // Simulate filtering
+                    console.log('Filter applied:', this.value);
+                    // In a real app, this would update the data
+                });
+            });
+
+            // Export functionality
+            const exportButton = document.querySelector('button:contains("Export Report")');
+            if (exportButton) {
+                exportButton.addEventListener('click', function() {
+                    // Simulate report generation
+                    alert('Generating compliance report... This will be downloaded shortly.');
+                });
+            }
+        });
+
+        // Automated offset scheduling simulation
+        function scheduleAutomatedOffset() {
+            // This would integrate with payment systems in a real app
+            console.log('Automated offset scheduled based on budget parameters');
+        }
+
+        // Real-time notification system
+        function addNotification(type, message) {
+            const notificationsContainer = document.querySelector('.space-y-3');
+            if (notificationsContainer) {
+                const notification = document.createElement('div');
+                notification.className = `flex items-start space-x-3 p-3 bg-${type}-50 rounded-lg border border-${type}-200`;
+                notification.innerHTML = `
+                    <div class="p-1 bg-${type} rounded-full">
+                        <svg class="h-3 w-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-sm text-${type}-800">${message}</p>
+                        <p class="text-xs text-${type}-600 mt-1">Just now</p>
+                    </div>
+                `;
+                notificationsContainer.insertBefore(notification, notificationsContainer.firstChild);
+            }
+        }
+    </script>
+</body>
+</html>

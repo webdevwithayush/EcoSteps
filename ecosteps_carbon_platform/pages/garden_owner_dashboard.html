@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garden Owner Dashboard - EcoSteps</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fecostepsc3183back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background min-h-screen font-source-sans">
+    <!-- Header -->
+    <header class="bg-surface shadow-soft border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary mr-3" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L8 8v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-8-6z"/>
+                        <path d="M12 14l3 3 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="text-xl font-inter font-bold text-primary">EcoSteps</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="garden_owner_dashboard.html" class="text-primary font-medium border-b-2 border-primary pb-1">Dashboard</a>
+                    <a href="garden_submission_form.html" class="text-text-secondary hover:text-primary transition-smooth">Submit Garden</a>
+                    <a href="ngo_carbon_credits_marketplace.html" class="text-text-secondary hover:text-primary transition-smooth">Marketplace</a>
+                    <a href="user_profile_account_settings.html" class="text-text-secondary hover:text-primary transition-smooth">Profile</a>
+                </nav>
+
+                <!-- Right Side Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-smooth">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="absolute top-1 right-1 h-2 w-2 bg-error rounded-full"></span>
+                    </button>
+
+                    <!-- Profile Menu -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-smooth">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile" class="h-8 w-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                            <span class="hidden sm:block font-medium">John Doe</span>
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2 text-text-secondary hover:text-primary transition-smooth" id="mobileMenuBtn">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden border-t border-gray-100 py-4" id="mobileMenu">
+                <nav class="space-y-2">
+                    <a href="garden_owner_dashboard.html" class="block px-4 py-2 text-primary font-medium bg-primary/5 rounded-lg">Dashboard</a>
+                    <a href="garden_submission_form.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-gray-50 rounded-lg transition-smooth">Submit Garden</a>
+                    <a href="ngo_carbon_credits_marketplace.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-gray-50 rounded-lg transition-smooth">Marketplace</a>
+                    <a href="user_profile_account_settings.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-gray-50 rounded-lg transition-smooth">Profile</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex items-center space-x-2 text-sm text-text-secondary">
+            <a href="garden_owner_dashboard.html" class="hover:text-primary transition-smooth">Dashboard</a>
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            <span class="text-primary font-medium">Overview</span>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-inter font-bold text-text-primary mb-2">Welcome back, John!</h1>
+            <p class="text-text-secondary">Track your carbon credit submissions and earnings</p>
+        </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+            <!-- Total Earnings -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100 hover:shadow-organic-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="p-3 bg-success/10 rounded-xl">
+                        <svg class="h-6 w-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-success bg-success/10 px-2 py-1 rounded-full">+12.5%</span>
+                </div>
+                <div class="text-2xl font-inter font-bold text-text-primary mb-1">$1,247.50</div>
+                <div class="text-sm text-text-secondary">Total Earnings</div>
+            </div>
+
+            <!-- Pending Submissions -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100 hover:shadow-organic-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="p-3 bg-warning/10 rounded-xl">
+                        <svg class="h-6 w-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-warning bg-warning/10 px-2 py-1 rounded-full">3 new</span>
+                </div>
+                <div class="text-2xl font-inter font-bold text-text-primary mb-1">5</div>
+                <div class="text-sm text-text-secondary">Pending Review</div>
+            </div>
+
+            <!-- Approved Credits -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100 hover:shadow-organic-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="p-3 bg-primary/10 rounded-xl">
+                        <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">Active</span>
+                </div>
+                <div class="text-2xl font-inter font-bold text-text-primary mb-1">47</div>
+                <div class="text-sm text-text-secondary">Approved Credits</div>
+            </div>
+
+            <!-- CO2 Impact -->
+            <div class="bg-surface rounded-2xl shadow-organic p-6 border border-gray-100 hover:shadow-organic-hover transition-smooth">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="p-3 bg-accent/10 rounded-xl">
+                        <svg class="h-6 w-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full">Growing</span>
+                </div>
+                <div class="text-2xl font-inter font-bold text-text-primary mb-1">2.3t</div>
+                <div class="text-sm text-text-secondary">CO2 Offset</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mb-8">
+            <h2 class="text-xl font-inter font-bold text-text-primary mb-4">Quick Actions</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="garden_submission_form.html" class="bg-primary text-white rounded-2xl p-6 hover:bg-primary-600 transition-smooth group">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-inter font-bold mb-2">Add New Garden</h3>
+                            <p class="text-primary-100">Submit your garden for carbon credit verification</p>
+                        </div>
+                        <svg class="h-8 w-8 group-hover:scale-110 transition-smooth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="garden_submission_form.html" class="bg-surface border-2 border-primary text-primary rounded-2xl p-6 hover:bg-primary/5 transition-smooth group">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-inter font-bold mb-2">Submit Tree Data</h3>
+                            <p class="text-text-secondary">Update existing garden with new tree information</p>
+                        </div>
+                        <svg class="h-8 w-8 group-hover:scale-110 transition-smooth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Submission Status Tracker -->
+            <div class="lg:col-span-2">
+                <div class="bg-surface rounded-2xl shadow-organic border border-gray-100 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-inter font-bold text-text-primary">Recent Submissions</h2>
+                        <button class="text-primary hover:text-primary-600 text-sm font-medium transition-smooth">View All</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Submission Item 1 -->
+                        <div class="border border-gray-100 rounded-xl p-4 hover:shadow-soft transition-smooth">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Garden submission" class="h-12 w-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">Backyard Vegetable Garden</h3>
+                                        <p class="text-sm text-text-secondary">Submitted 2 days ago</p>
+                                    </div>
+                                </div>
+                                <span class="bg-warning/10 text-warning px-3 py-1 rounded-full text-sm font-medium">Under Review</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-text-secondary">Estimated completion: 3-5 days</div>
+                                <div class="text-sm font-medium text-primary">15 trees • 0.8t CO2</div>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-3">
+                                <div class="flex justify-between text-xs text-text-secondary mb-1">
+                                    <span>Progress</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submission Item 2 -->
+                        <div class="border border-gray-100 rounded-xl p-4 hover:shadow-soft transition-smooth">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.pixabay.com/photo/2015/12/01/20/28/road-1072821_1280.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Garden submission" class="h-12 w-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">Front Yard Fruit Trees</h3>
+                                        <p class="text-sm text-text-secondary">Submitted 1 week ago</p>
+                                    </div>
+                                </div>
+                                <span class="bg-success/10 text-success px-3 py-1 rounded-full text-sm font-medium">Approved</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-text-secondary">Approved on Jan 15, 2025</div>
+                                <div class="text-sm font-medium text-success">8 trees • 1.2t CO2</div>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-3">
+                                <div class="flex justify-between text-xs text-text-secondary mb-1">
+                                    <span>Progress</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-success h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submission Item 3 -->
+                        <div class="border border-gray-100 rounded-xl p-4 hover:shadow-soft transition-smooth">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Garden submission" class="h-12 w-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                                    <div>
+                                        <h3 class="font-medium text-text-primary">Community Garden Plot</h3>
+                                        <p class="text-sm text-text-secondary">Submitted 3 days ago</p>
+                                    </div>
+                                </div>
+                                <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Submitted</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-text-secondary">Waiting for initial review</div>
+                                <div class="text-sm font-medium text-primary">25 trees • 1.5t CO2</div>
+                            </div>
+                            <!-- Progress Bar -->
+                            <div class="mt-3">
+                                <div class="flex justify-between text-xs text-text-secondary mb-1">
+                                    <span>Progress</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings Wallet & Notifications -->
+            <div class="space-y-6">
+                <!-- Earnings Wallet -->
+                <div class="bg-surface rounded-2xl shadow-organic border border-gray-100 p-6">
+                    <h2 class="text-xl font-inter font-bold text-text-primary mb-6">Earnings Wallet</h2>
+                    
+                    <div class="bg-gradient-to-r from-primary to-primary-600 rounded-xl p-6 text-white mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-primary-100">Current Balance</span>
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                            </svg>
+                        </div>
+                        <div class="text-3xl font-inter font-bold mb-2">$1,247.50</div>
+                        <div class="text-primary-100 text-sm">Available for withdrawal</div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <h3 class="font-medium text-text-primary">Recent Transactions</h3>
+                        
+                        <div class="flex items-center justify-between py-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-success/10 rounded-lg">
+                                    <svg class="h-4 w-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Credit Sale</div>
+                                    <div class="text-xs text-text-secondary">Jan 15, 2025</div>
+                                </div>
+                            </div>
+                            <div class="text-success font-medium">+$125.00</div>
+                        </div>
+
+                        <div class="flex items-center justify-between py-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-success/10 rounded-lg">
+                                    <svg class="h-4 w-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Credit Sale</div>
+                                    <div class="text-xs text-text-secondary">Jan 12, 2025</div>
+                                </div>
+                            </div>
+                            <div class="text-success font-medium">+$89.50</div>
+                        </div>
+
+                        <div class="flex items-center justify-between py-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-error/10 rounded-lg">
+                                    <svg class="h-4 w-4 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-text-primary">Withdrawal</div>
+                                    <div class="text-xs text-text-secondary">Jan 10, 2025</div>
+                                </div>
+                            </div>
+                            <div class="text-error font-medium">-$500.00</div>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-smooth">
+                        Withdraw Funds
+                    </button>
+                </div>
+
+                <!-- Real-time Notifications -->
+                <div class="bg-surface rounded-2xl shadow-organic border border-gray-100 p-6">
+                    <h2 class="text-xl font-inter font-bold text-text-primary mb-4">Notifications</h2>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-success/5 rounded-lg border border-success/20">
+                            <div class="p-1 bg-success/20 rounded-full mt-1">
+                                <div class="h-2 w-2 bg-success rounded-full"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary">Garden Approved!</div>
+                                <div class="text-xs text-text-secondary">Your Front Yard Fruit Trees submission has been approved and is now available for purchase.</div>
+                                <div class="text-xs text-success mt-1">2 hours ago</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-warning/5 rounded-lg border border-warning/20">
+                            <div class="p-1 bg-warning/20 rounded-full mt-1">
+                                <div class="h-2 w-2 bg-warning rounded-full"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary">Review in Progress</div>
+                                <div class="text-xs text-text-secondary">Your Backyard Vegetable Garden is currently under review by our verification team.</div>
+                                <div class="text-xs text-warning mt-1">1 day ago</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
+                            <div class="p-1 bg-primary/20 rounded-full mt-1">
+                                <div class="h-2 w-2 bg-primary rounded-full"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary">Payment Received</div>
+                                <div class="text-xs text-text-secondary">$125.00 has been added to your wallet from a recent credit sale.</div>
+                                <div class="text-xs text-primary mt-1">3 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Garden Gallery -->
+        <div class="mt-8">
+            <div class="bg-surface rounded-2xl shadow-organic border border-gray-100 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-inter font-bold text-text-primary">Garden Gallery</h2>
+                    <div class="flex items-center space-x-2">
+                        <select class="text-sm border border-gray-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-smooth">
+                            <option>All Status</option>
+                            <option>Approved</option>
+                            <option>Pending</option>
+                            <option>Under Review</option>
+                        </select>
+                        <button class="text-primary hover:text-primary-600 text-sm font-medium transition-smooth">View All</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Garden Image 1 -->
+                    <div class="relative group cursor-pointer">
+                        <div class="aspect-square overflow-hidden rounded-xl">
+                            <img src="https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Backyard Vegetable Garden" class="w-full h-full object-cover group-hover:scale-105 transition-smooth" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-warning/90 text-white px-2 py-1 rounded-full text-xs font-medium">Review</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 rounded-b-xl">
+                            <div class="text-white text-sm font-medium">Vegetable Garden</div>
+                            <div class="text-white/80 text-xs">15 trees • 0.8t CO2</div>
+                        </div>
+                    </div>
+
+                    <!-- Garden Image 2 -->
+                    <div class="relative group cursor-pointer">
+                        <div class="aspect-square overflow-hidden rounded-xl">
+                            <img src="https://images.pixabay.com/photo/2015/12/01/20/28/road-1072821_1280.jpg" alt="Front Yard Fruit Trees" class="w-full h-full object-cover group-hover:scale-105 transition-smooth" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-success/90 text-white px-2 py-1 rounded-full text-xs font-medium">Approved</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 rounded-b-xl">
+                            <div class="text-white text-sm font-medium">Fruit Trees</div>
+                            <div class="text-white/80 text-xs">8 trees • 1.2t CO2</div>
+                        </div>
+                    </div>
+
+                    <!-- Garden Image 3 -->
+                    <div class="relative group cursor-pointer">
+                        <div class="aspect-square overflow-hidden rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Community Garden Plot" class="w-full h-full object-cover group-hover:scale-105 transition-smooth" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-primary/90 text-white px-2 py-1 rounded-full text-xs font-medium">Submitted</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 rounded-b-xl">
+                            <div class="text-white text-sm font-medium">Community Plot</div>
+                            <div class="text-white/80 text-xs">25 trees • 1.5t CO2</div>
+                        </div>
+                    </div>
+
+                    <!-- Garden Image 4 -->
+                    <div class="relative group cursor-pointer">
+                        <div class="aspect-square overflow-hidden rounded-xl">
+                            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Herb Garden" class="w-full h-full object-cover group-hover:scale-105 transition-smooth" loading="lazy" onerror="this.src='https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;" />
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-success/90 text-white px-2 py-1 rounded-full text-xs font-medium">Approved</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 rounded-b-xl">
+                            <div class="text-white text-sm font-medium">Herb Garden</div>
+                            <div class="text-white/80 text-xs">5 trees • 0.3t CO2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-gray-100 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-sm text-text-secondary">
+                <p>&copy; 2025 EcoSteps Carbon Platform. All Rights Reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-primary transition-smooth">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Terms of Service</a>
+                    <a href="#" class="hover:text-primary transition-smooth">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Simulate real-time updates
+            setInterval(function() {
+                // Update notification badge occasionally
+                const notificationBadge = document.querySelector('.absolute.top-1.right-1');
+                if (Math.random() > 0.8) {
+                    notificationBadge.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        notificationBadge.classList.remove('animate-pulse');
+                    }, 2000);
+                }
+            }, 10000);
+
+            // Gallery image click handler
+            const galleryImages = document.querySelectorAll('.grid .relative.group');
+            galleryImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    // Simulate opening image in modal or detailed view
+                    const imageName = this.querySelector('.text-white.text-sm.font-medium').textContent;
+                    console.log('Opening detailed view for:', imageName);
+                });
+            });
+
+            // Filter functionality
+            const statusFilter = document.querySelector('select');
+            statusFilter.addEventListener('change', function() {
+                const selectedStatus = this.value;
+                console.log('Filtering by status:', selectedStatus);
+                // In a real app, this would filter the gallery images
+            });
+        });
+    </script>
+</body>
+</html>
