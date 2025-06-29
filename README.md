@@ -1,42 +1,77 @@
 # 🌱 EcoSteps - Carbon Credit Marketplace
 
-**EcoSteps** is a sustainable, eco-driven platform that connects individual users (garden owners) with NGOs by enabling them to generate, list, and sell carbon credits. It provides two primary sections — for **Users** and **NGOs** — to promote carbon awareness and funding for environmental efforts.
+EcoSteps is a simple, user-friendly carbon credit marketplace that allows individuals—such as garden or farm owners—to sell carbon credits based on certified carbon intake, and enables NGOs to purchase these credits to offset emissions and support sustainability goals.
 
 ---
 
-## 📌 Features
+## 📌 Problem It Solves
 
-### 🧑‍🌾 User Panel
-- Upload garden details (area, images, tree strength, etc.)
-- Add carbon emission reduction data (e.g., composting, machines)
-- Auto-calculate & generate **carbon credits**
-- View your credits and earnings
+🌍 Climate change requires grassroots action. But individual efforts often go unrecognized.
 
-### 🏢 NGO Panel
-- Login to view available carbon credits
-- Purchase carbon credits from users
-- Filter by location, carbon value, etc.
+EcoSteps bridges that gap by:
+- Providing a platform for individuals to monetize their carbon sequestration efforts (like planting trees).
+- Empowering NGOs to transparently invest in verified carbon offsets.
+- Simplifying the carbon credit process through a clean, guided application and marketplace.
+
+---
+
+## 🎯 Key Features
 
 ### 🔐 Authentication
-- **Google Login** powered by [Supabase Auth](https://supabase.com/)
-- Session-based access control for both user types
+- Simple login/register system for both Garden Owners and NGOs.
+- Supabase integration for secure authentication and database management.
+
+### 🧑‍🌾 Garden Owner (Seller) Side
+- Fill a garden submission form including:
+  - Location and size of farmland.
+  - Number and types of trees planted.
+  - Certified carbon intake value (based on a third-party survey).
+- Upload certificate proof and images.
+- Automatically calculate carbon credits based on intake.
+- List carbon credits for sale on the marketplace.
+- Track earnings and credit sales via a personal dashboard.
+
+### 🌐 NGO (Buyer) Side
+- Browse listed carbon credits with filters (location, price, rating, availability).
+- Add credits to cart and checkout.
+- Track impact metrics and purchase history via an NGO dashboard.
+- View geographic map of supported areas.
+
+### 📊 Marketplace & Analytics
+- Real-time credit availability.
+- Leaderboards and progress charts.
+- Wallet summary and past activity history.
 
 ---
 
-## 🚀 Technologies Used
+## ⚙️ Tech & Tools
 
-| Area           | Tech Stack                     |
-|----------------|--------------------------------|
-| Frontend       | HTML, CSS, Vanilla JavaScript |
-| Backend/Auth   | Supabase (Auth, DB, API)       |
-| Hosting        | GitHub Pages                   |
-| Version Control| Git & GitHub                   |
+- ⚡ Built with modern frontend architecture (Vite + React).
+- 🎨 Styled using TailwindCSS.
+- 🔗 Backend powered by Supabase (authentication, database, storage).
+- 🧠 AI-assisted planning and code-generation using Bolt.new.
 
 ---
 
-## 🛠️ Installation & Setup
+## 🚧 Challenges We Ran Into
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/ecosteps.git
-cd ecosteps
+### 🌿 Understanding Carbon Credit Systems
+- **Problem:** Researching how carbon credit certification works and how individuals could participate in trading.
+- **Solution:** We simplified this by designing a system where certified carbon intake can directly be input, verified with documents, and converted into tradable units.
+
+### ⚙️ Backend Integration with Supabase
+- **Problem:** Encountered difficulties while wiring up real-time data sync, database security policies, and conditional rendering based on user roles.
+- **Solution:** Modularized the codebase, used Supabase Row-Level Security, and added fallback UI for smoother UX.
+
+### 📈 Market Novelty
+- **Problem:** Carbon credit trading at a micro/individual level is a relatively new concept.
+- **Solution:** We framed it as a **mission-driven opportunity**, letting individuals earn while healing the planet. Our simple UX ensures people understand the impact easily.
+
+---
+
+## 🚀 How to Run Locally
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/yourusername/ecosteps.git
+   cd ecosteps
